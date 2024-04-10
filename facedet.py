@@ -1,6 +1,6 @@
 import cv2
 
-face_cascade = cv2.CascadeClassifier(r'C:\Users\Admin\OneDrive - vit.ac.in\Documents\VSCode\MISC\FaceDetection\index.xml')
+face_cascade = cv2.CascadeClassifier('index.xml')
 
 if face_cascade.empty():
     print("Error: Failed to load cascade classifier.")
@@ -16,11 +16,11 @@ while True:
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
 
     for (x, y, w, h) in faces:
-        cv2.rectangle(img, (x, y), (x + w, y + h), (50, 50, 4), 10)
+        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 150, 0), 2)
 
     cv2.imshow('img', img)
-    k = cv2.waitKey(30) & 0xff
-    if k == 27:
+    k = cv2.waitKey(30) & 0xFF
+    if k == ord('r'):
         break
 cap.release()
 cv2.destroyAllWindows()
